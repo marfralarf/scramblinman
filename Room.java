@@ -1,5 +1,5 @@
 public class Room{
-        static char[][] points;
+        char[][] points;
         static int length;
         static int width;
     
@@ -19,14 +19,16 @@ public class Room{
             }
             return points;
         }
+
         public void render(int x, int y){
-        for (int i = 0; i < x; i++){
-            for (int j = 0; j < y; j++){
-                System.out.print(points[i][j] + " ");
+            for (int i = 0; i < x; i++){
+                for (int j = 0; j < y; j++){
+                    System.out.print(points[i][j] + " ");
                 }
-            System.out.println(" ");
+                System.out.println(" ");
             }
         }
+    
         public char[][] spawnChar(int x, int y){
             points = buildMap(length, width);
             points[x][y] = 'O';
@@ -44,5 +46,6 @@ public class Room{
                 
             return hero.pos;
         }
+
 }
 
