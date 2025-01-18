@@ -11,7 +11,7 @@ public class Main {
       mainMap.render(roomSize[0], roomSize[1]);
     while (hero.pos[0] < 20){
       char move = Controls.moveInput();
-      int[] movement = Controls.charVector(move);
+      int[] movement = Controls.charVector(hero, move);
       moveChar(mainMap, hero, movement);
       }
   }
