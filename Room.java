@@ -36,7 +36,8 @@ public class Room{
             int x;
             int y;
             points = buildMap(points.length, points[0].length);
-            for (Entity guy : guys){
+            for (int i = guys.size() - 1; i >= 0; i--){
+                Entity guy = guys.get(i);
                 x = guy.pos[0];
                 y = guy.pos[1];
                 points[x][y] = guy.symbol;
