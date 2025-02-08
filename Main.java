@@ -22,9 +22,4 @@ public class Main {
       hero.moveChar(mainMap, guys, movement);
     }
   }
-  public static int addScore(int attempts, int score){
-    score += attempts;
-    return score;
-  }
-
 }
