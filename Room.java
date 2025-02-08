@@ -1,15 +1,14 @@
+import java.util.*;
 public class Room{
         char[][] points;
-        static int length;
-        static int width;
     
         public Room(char[][] initPoints){
             points = initPoints;
         }
        
         public static char[][] buildMap(int x, int y){
-            length = x;
-            width = y;
+            int length = x;
+            int width = y;
             char[][] points = new char [length][width];
             
             for (int i = 0; i < length; i++){
@@ -19,7 +18,11 @@ public class Room{
             }
             return points;
         }
-
+        public int[] getSize(){
+            int[] roomSize = {points.length, points[0].length};
+            return roomSize;
+        }
+    
         public void render(int x, int y){
             for (int i = 0; i < x; i++){
                 for (int j = 0; j < y; j++){
@@ -29,19 +32,26 @@ public class Room{
             }
         }
     
-        public char[][] spawnChar(int x, int y){
-            points = buildMap(length, width);
-            points[x][y] = 'O';
+        public char[][] spawnChar(ArrayList<Entity> guys){
+            int x;
+            int y;
+            points = buildMap(points.length, points[0].length);
+            for (Entity guy : guys){
+                x = guy.pos[0];
+                y = guy.pos[1];
+                points[x][y] = guy.symbol;
+            }
             return points;
         }
+    
         public int[] loopMap(int[] roomSize, Character hero){
-            if (hero.pos[0] <= 0)
-                hero.pos[0] = 9;
-            if (hero.pos[0] >= length)
+            if (hero.pos[0] < 0)
+                hero.pos[0] = points.length-1;
+            if (hero.pos[0] >= points.length)
                 hero.pos[0] = 0;
-            if (hero.pos[1] <= 0)
-                hero.pos[1] = 9;
-            if (hero.pos[1] >= width)
+            if (hero.pos[1] < 0)
+                hero.pos[1] = points[0].length-1;
+            if (hero.pos[1] >= points[0].length)
                 hero.pos[1] = 0;
                 
             return hero.pos;
