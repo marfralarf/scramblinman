@@ -11,11 +11,16 @@ public class Game extends Entity {
     score = 6;
   }
   
-  public void gameWin(ArrayList<Entity> guys){
+    public void gameWin(ArrayList<Entity> guys){
     Character hero = (Character)guys.get(0);
     Game currentGame = (Game)guys.get(1);
     hero.score += currentGame.score;
-    System.out.println("You Found A Treasure! \n Current Points: " + hero.score);
+    String[] treasures = {"3 gold dubloons", "true love", "Jimmy Hoffa's body", 
+                          "Lindbergh Baby", "The Ark of the Covenant", "Amelia Earhart",
+                          "Jon-Benet Ramsey", "The Higgs Boson", "A Map To The Lost City of Atlantis",
+                          "A Map To Shangrila", "A Map To El Dorado"};
+    String treasure = treasures[(int)(11 * Math.random() + 1)];
+    System.out.println("You Found A Treasure! You got " + treasure + "\n Current Points: " + hero.score);
     currentGame.pos[0] = (int) (Main.roomSize[0] * Math.random());
     currentGame.pos[1] = (int) (Main.roomSize[1] * Math.random());
     currentGame.score = 6;
