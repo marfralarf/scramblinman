@@ -15,7 +15,7 @@ public class Game extends Entity {
     Character hero = (Character)guys.get(0);
     Game currentGame = (Game)guys.get(1);
     hero.score += currentGame.score;
-    String[] treasures = {"3 gold dubloons", "true love", "Jimmy Hoffa's body", 
+    String[] treasures = {"3 gold dubloons", "true love", "The One Piece", "Jimmy Hoffa's body", 
                           "Lindbergh Baby", "The Ark of the Covenant", "Amelia Earhart",
                           "Jon-Benet Ramsey", "The Higgs Boson", "A Map To The Lost City of Atlantis",
                           "A Map To Shangrila", "A Map To El Dorado"};
