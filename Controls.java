@@ -6,7 +6,7 @@ public class Controls {
 
     public char moveInput() {
         Scanner directions = new Scanner(System.in);
-        System.out.println("Pick your direction of movement");
+        System.out.println("Pick your direction of movement. Press n, e, s, or w to move and x to dig a hole!");
         String input = directions.nextLine();
         return input.charAt(0);
     }
