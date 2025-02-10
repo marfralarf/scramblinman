@@ -31,6 +31,16 @@ public class Room{
                 System.out.println(" ");
             }
         }
+
+        public String copyPoints(int x, int y){
+            StringBuilder output = new StringBuilder();
+            for (int i = 0; i < x; i++){
+                for (int j = 0; j < y; j++){
+                    output.append(points[i][j]);
+                }
+            }
+            return output.toString();
+        }
     
         public char[][] spawnChar(ArrayList<Entity> guys){
             int x;
@@ -45,7 +55,7 @@ public class Room{
             return points;
         }
     
-        public int[] loopMap(int[] roomSize, Character hero){
+        public int[] loopMap(Character hero){
             if (hero.pos[0] < 0)
                 hero.pos[0] = points.length-1;
             if (hero.pos[0] >= points.length)
