@@ -8,7 +8,7 @@ public class Main {
     JFrame frame = new JFrame("My app");
     frame.setSize(300, 300);
     GUI newGUI = new GUI();
-    System.out.println("You can string multiple movement commands in one input like ne, nn, nneee, etc");
+    System.out.println("COOL TIP: You can string multiple movement commands in one input like ne, nn, nneee, etc");
     ArrayList<Entity> guys = gameStart();
     Character hero = (Character)guys.get(0);
 
