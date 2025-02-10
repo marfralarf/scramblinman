@@ -17,9 +17,9 @@ public class Game extends Entity {
     hero.score += currentGame.score;
     String[] treasures = {"3 gold dubloons", "true love", "The One Piece", "Jimmy Hoffa's body", 
                           "Lindbergh Baby", "The Ark of the Covenant", "Amelia Earhart", "Moonlight Great Sword",
-                          "Jon-Benet Ramsey", "The Higgs Boson", "A Map To The Lost City of Atlantis",
+                           "The Higgs Boson", "A Map To The Lost City of Atlantis",
                           "A Map To Shangrila", "A Map To El Dorado", "Pepsi (Crystal)", "Potion of Lesser Worm"};
-    String treasure = treasures[(int)(14 * Math.random() + 1)];
+    String treasure = treasures[(int)(13 * Math.random() + 1)];
     System.out.println("You Found A Treasure! You got " + treasure + "\n Current Points: " + hero.score);
     currentGame.pos[0] = (int) (Main.roomSize[0] * Math.random());
     currentGame.pos[1] = (int) (Main.roomSize[1] * Math.random());
