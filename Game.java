@@ -8,9 +8,9 @@ public class Game extends Entity {
     pos[0] = x;
     pos[1] = y;
     symbol = '.';
-    score = 6;
+    score = (int)(0.8 * length);
   }
-  
+
   public ArrayList<Entity> gameWin(ArrayList<Entity> guys){
     Character hero = (Character)guys.get(0);
     Game currentGame = (Game)guys.get(1);
@@ -23,7 +23,7 @@ public class Game extends Entity {
     System.out.println("You Found A Treasure! You got " + treasure + "\n Current Points: " + hero.score);
     currentGame.pos[0] = (int) (Main.roomSize[0] * Math.random());
     currentGame.pos[1] = (int) (Main.roomSize[1] * Math.random());
-    currentGame.score = 6;
+    currentGame.score = 8;
     return resetHoles(guys);
   }
   public ArrayList<Entity> resetHoles(ArrayList<Entity> guys){
@@ -38,7 +38,7 @@ public class Game extends Entity {
     System.out.println(" ");
     return guys;
   }
-  
+
   public boolean checkTreasure(ArrayList<Entity> guys) {
     int holeNum = guys.size() - 1;
     if (guys.size() < 1)
@@ -53,8 +53,9 @@ public class Game extends Entity {
   }
 
   public void findWrapDistance(int[] pointA, int[] pointB){
+    int[] roomCenter = {Main.roomSize[0]/2, Main.roomSize[1]/2};
     int[] distanceVector = {findDistance(pointA[0], pointB[0]), findDistance(pointA[1], pointB[1])};
-    int[] wrapDistance = {5 - Math.abs(5 - distanceVector[0]), 5 - Math.abs(5 - distanceVector[1])};
+    int[] wrapDistance = {roomCenter[0] - Math.abs(roomCenter[0] - distanceVector[0]), roomCenter[1] - Math.abs(roomCenter[1] - distanceVector[1])};
     int totalDistance = wrapDistance[0] + wrapDistance[1];
     System.out.println("You are " + totalDistance + " steps away from the treasure)");
   }
