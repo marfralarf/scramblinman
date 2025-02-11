@@ -14,6 +14,7 @@ public class Controls {
     public int[] charVector(ArrayList<Entity> guys, String[] news) {
         int[] move = { 0, 0 };
         Character hero = (Character)guys.get(0);
+        String[] newsMatch = {"n", "e", "s", "w", "x"};
         for (String letter : news){
         switch (letter) {
             case "n":
