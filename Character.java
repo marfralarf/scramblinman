@@ -1,42 +1,33 @@
-import java.util.*;
-import javax.swing.*;
+import java.util.ArrayList;
 
-public class Main {
-  static int[] roomSize = { 10, 10 };
-
-  public static void main(String[] args) {
-    JFrame frame = new JFrame("My app");
-    frame.setSize(300, 300);
-    GUI newGUI = new GUI();
-
-    ArrayList<Entity> guys = gameStart();
-    Character hero = (Character)guys.get(0);
-
-    char[][] points = Room.buildMap(roomSize[0], roomSize[1]);
-    Room mainMap = new Room(points);
-    Controls user = new Controls();
-
-    mainMap.spawnChar(guys);
-    //newGUI.makeButtons(frame);
-    //newGUI.fillPanels(frame, mainMap);
-    System.out.println(" ");
-    mainMap.render(roomSize[0], roomSize[1]);
-    frame.setVisible(true);
-
-    while (hero.pos[0] < 20) {
-      String[] move = user.moveInput();
-      int[] movement = user.charVector(guys, move);
-      hero.moveChar(mainMap, guys, movement);
-    }
+public class Character extends Entity {
+  public Character() {
+    pos[0] += (int)(Main.roomSize[0] / 2);
+    pos[1] += (int)(Main.roomSize[1] / 2);
+    symbol = '0';
+    score = 0;
   }
-  public static ArrayList<Entity> gameStart(){
-    Game newGame = new Game(roomSize[0], roomSize[1]);
-    Character hero = new Character();
-    ArrayList<Entity> guys = new ArrayList<Entity>();
-    newGame.findWrapDistance(newGame.pos, hero.pos);
-    guys.add(hero);
-    guys.add(newGame);
 
-    return guys;
+  public Character(int[] initPos) {
+    pos = initPos;
+    symbol = '0';
+  }
+
+  public int[] getPos(Character guy) {
+    return pos;
+  }
+
+  public void moveChar(Room mainMap, ArrayList<Entity> guys, int[] movement) {
+    Character hero = (Character) guys.get(0);
+    hero.pos[0] += movement[1];
+    hero.pos[1] += movement[0];
+    int[] roomSize = mainMap.getSize();
+    mainMap.loopMap(hero);
+    mainMap.spawnChar(guys);
+  }
+  public Hole digHole() {
+    int[] holePos = pos.clone();
+    Hole hole = new Hole(holePos);
+    return hole;
   }
 }
