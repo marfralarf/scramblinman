@@ -8,7 +8,7 @@ public class Game extends Entity {
     pos[0] = x;
     pos[1] = y;
     symbol = '.';
-    score = (int)(0.8 * length);
+    score = (int)(0.8 * Math.sqrt(length)) + 5;
   }
 
   public ArrayList<Entity> gameWin(ArrayList<Entity> guys){
@@ -23,7 +23,7 @@ public class Game extends Entity {
     System.out.println("You Found A Treasure! You got " + treasure + "\n Current Points: " + hero.score);
     currentGame.pos[0] = (int) (Main.roomSize[0] * Math.random());
     currentGame.pos[1] = (int) (Main.roomSize[1] * Math.random());
-    currentGame.score = 8;
+    currentGame.score = (int)(0.8*Math.sqrt(Main.roomSize[0]) + 5);
     return resetHoles(guys);
   }
   public ArrayList<Entity> resetHoles(ArrayList<Entity> guys){
