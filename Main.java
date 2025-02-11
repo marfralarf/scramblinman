@@ -2,12 +2,12 @@ import java.util.*;
 import javax.swing.*;
 
 public class Main {
-  static int[] roomSize = { 10, 10 };
+  static int[] roomSize = { 20, 20 };
 
   public static void main(String[] args) {
-    JFrame frame = new JFrame("My app");
-    frame.setSize(300, 300);
-    GUI newGUI = new GUI();
+    //JFrame frame = new JFrame("My app");
+    //frame.setSize(300, 300);
+    //GUI newGUI = new GUI();
     System.out.println("COOL TIP: You can string multiple movement commands in one input like ne, nn, nneee, etc");
     ArrayList<Entity> guys = gameStart();
     Character hero = (Character)guys.get(0);
@@ -21,12 +21,13 @@ public class Main {
     //newGUI.fillPanels(frame, mainMap);
     System.out.println(" ");
     mainMap.render(roomSize[0], roomSize[1]);
-    frame.setVisible(true);
+    //frame.setVisible(true);
 
-    while (hero.pos[0] < 20) {
+    while (hero.pos[0] < 2*roomSize[0]) {
       String[] move = user.moveInput();
       int[] movement = user.charVector(guys, move);
       hero.moveChar(mainMap, guys, movement);
+      mainMap.render(roomSize[0], roomSize[1]);
     }
   }
   public static ArrayList<Entity> gameStart(){
